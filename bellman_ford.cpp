@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<stack>
 using namespace std;
 const int INF = 0x3f3f3f3f;
 int main()
@@ -23,6 +24,7 @@ int main()
 	int src;
 	cout << "Enter source: ";
 	cin >> src;
+	vector<int> prev(V,src);
 	dis[src] = 0;
 
 	// relax edges |V|-1 times
@@ -34,7 +36,10 @@ int main()
 			v = edge.first.second;
 			w = edge.second;
 			if(dis[v] > dis[u]+w)
+			{
 				dis[v] = dis[u]+w;
+				prev[v] = u;
+			}
 		}
 	}
 
@@ -51,4 +56,20 @@ int main()
 	}
 	for(int i = 0; i < V; i++)
 		cout << "Distance["<<i<<"] is "<< dis[i] << '\n';
+
+	cout << "Enter Destination: ";
+	int des;
+	cin >> des;
+	stack<int> s;
+	s.push(des);
+	while(prev[des] != des)
+	{
+		s.push(prev[des]);
+		des = prev[des];
+	}
+	while(!s.empty())
+	{
+		cout << s.top() << "->";
+		s.pop();
+	}
 }

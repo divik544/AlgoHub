@@ -1,7 +1,6 @@
 // Program to find Longest Increasing Subsequence in O(nlgn)
 // tested on GFG Practice
-// Caution: This program finds the length of Longest Increasing Subsequence
-//			not Longest Non-Decreasing Subsequence
+// Caution: This program finds the length of Longest Increasing Subsequence not Longest Non-Decreasing Subsequence
 #include <bits/stdc++.h>
 using namespace std;
 int main()

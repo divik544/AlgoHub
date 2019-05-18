@@ -50,7 +50,7 @@ int main()
 		if(u == -1)
 			break;
 		graph[u].push_back({w,v});
-		// graph[v].push_back({w,u});	//uncomment this line if graph is directed
+		// graph[v].push_back({w,u});	//uncomment this line if graph is undirected
 	}
 	cout << "Enter src: ";
 	int src;

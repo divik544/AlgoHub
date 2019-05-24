@@ -71,31 +71,63 @@ int prefixCount(const std::string& word, trienode* head)
 	return (cur->prefix + cur->end);
 }
 
+trienode* removeWord(trienode* head,const std::string &s,int index = 0)
+{
+	if(head == NULL)
+		return NULL;
+	if(index == s.length())
+	{
+		if(head->end)
+			head->end = false;
+		if(head->child.empty())
+		{
+			delete head;
+			head = NULL;
+		}
+		return head;
+	}
+	head->child[s[index]] = removeWord(head->child[s[index]],s,index+1);
+	head->prefix--;
+	if(head->child[s[index]] == NULL)
+		head->child.erase(s[index]);
+	if(head->child.empty() && head->end == false)
+	{
+		delete head;
+		head = NULL;
+	}
+	return head;
+}
 int main()
 {
 	trienode* head = new trienode;
 	std::string word;
 	while(1)
 	{
-		cout << "1.Insert Word\n2.Search Word\n3.Count Prefix\nEnter Choice: ";
+		cout << "1.Insert Word\n2.Search Word\n3.Count Prefix\n4.Remove Word\nEnter Choice: ";
 		int choice;
 		cin >> choice;
 		cout << "Enter Word: ";
 		cin >> word;
-		if(choice == 1)
-		{	
-			insertWord(word, head);
-		}
-		if(choice == 2)
+		switch(choice)
 		{
-			if(searchWord(word, head))
-				cout << "Found\n";
-			else
-				cout << "Not Found\n";
-		}
-		if(choice == 3)
-		{
-			cout << prefixCount(word,head) << '\n';
+			case 1:
+				insertWord(word, head);
+				break;
+			case 2:
+				if(searchWord(word, head))
+					cout << "Found\n";
+				else
+					cout << "Not Found\n";
+				break;
+			case 3:
+				cout << prefixCount(word,head) << '\n';
+				break;
+			case 4:
+				removeWord(head,word);
+				break;
+			default:
+				cout << "Invalid Choice\n";
 		}
 	}
+	delete head;
 }

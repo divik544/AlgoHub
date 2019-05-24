@@ -9,8 +9,23 @@ using std::cout;
 struct trienode
 {
 	std::unordered_map<char, trienode* > child;
-	bool end = false;
-	int prefix = 0;
+	bool end;
+	int prefix;
+	trienode()
+	{
+		end = false;
+		prefix = 0;
+	}
+	~trienode()
+	{
+		trienode* temp;
+		for(auto i : child)
+		{
+			temp = i.second;
+			delete temp;
+		}
+		child.clear();
+	}
 };
 
 void insertWord(const std::string& word, trienode* head)

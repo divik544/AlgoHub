@@ -1,7 +1,7 @@
-#include<iostream>
-#include<vector>
-#include<set>
-#include<stack>
+#include <iostream>
+#include <vector>
+#include <set>
+#include <stack>
 using namespace std;
 const int INF = 0x3f3f3f3f;
 

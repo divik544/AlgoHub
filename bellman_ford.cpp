@@ -1,6 +1,6 @@
-#include<iostream>
-#include<vector>
-#include<stack>
+#include <iostream>
+#include <vector>
+#include <stack>
 using namespace std;
 const int INF = 0x3f3f3f3f;
 int main()

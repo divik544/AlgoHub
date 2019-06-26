@@ -1,8 +1,8 @@
 //Tries
 //Supports 3 Operations (i) insertion (ii) deletion (iii) count the total words with given prefix
 //Status Accepted tested on Contacts(https://www.hackerrank.com/challenges/contacts/problem)
-#include<iostream>
-#include<unordered_map>
+#include <iostream>
+#include <unordered_map>
 using std::cin;
 using std::cout;
 

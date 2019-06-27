@@ -1,6 +1,6 @@
-#include<iostream>
-#include<vector>
-#include<stack>
+#include <iostream>
+#include <vector>
+#include <stack>
 using namespace std;
 
 void dfs(vector<vector<int> > &graph,stack<int> &s, vector<bool> &vis, int u)
